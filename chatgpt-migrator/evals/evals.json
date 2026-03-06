@@ -1,0 +1,23 @@
+{
+  "skill_name": "chatgpt-migrator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just exported all my ChatGPT data and dropped it into this folder. Can you help me migrate everything to Claude? I want the full works - profile, memories, system prompt, the lot. I use Claude across all platforms (web, Cowork, and Claude Code). I don't have any existing Claude memories yet.",
+      "expected_output": "Should run the full pipeline: preprocess the test export, analyse batches, synthesise all 6 output files (claude-profile.md, claude-memories.md, claude-system-prompt.md, claude-skills.md, topic-index.md, migration-summary.md). Should handle recency correctly - recent conversations weighted more heavily than historical ones. Output files should be specific to this user, not generic.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I've got my ChatGPT export in here. I'm mainly interested in the professional/work side of things - I've changed jobs a few times over the years so the old work stuff isn't really relevant anymore. Focus on my recent professional context. I primarily use Claude.ai. No existing Claude memories.",
+      "expected_output": "Should respect the scope filter (work/professional only). Recency should be extra important here since the user explicitly said old work stuff isn't relevant. The profile and memories should focus on current professional context, not historical roles. Skills suggestions should be work-oriented.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I exported my ChatGPT history and want to migrate to Claude. I'm already a Claude user and have these existing memories:\n- Works in tech industry\n- Based in London\n- Prefers concise responses\n- Interested in marathon running\n- Uses PostHog for analytics\n- Former DJ\n- Enjoys Japanese food\nCan you cross-reference these with my ChatGPT history and give me the full migration package? I use all Claude platforms.",
+      "expected_output": "Should produce all 6 standard output files PLUS a memory-crossref.md file. The cross-reference should correctly categorise existing memories as confirmed, outdated, or unchanged. New facts from ChatGPT should be identified. The migration summary should mention the cross-reference.",
+      "files": []
+    }
+  ]
+}
