@@ -22,7 +22,7 @@ Users may arrive via two different routes:
 
 **Path 2 (Deep Migration)**: They exported their full ChatGPT data and want you to process it. This is what the rest of this skill handles.
 
-Many users will do Path 1 first and then come to Path 2 later when their data export arrives (it can take up to 24 hours). In this case, they already have Claude memories from Path 1. The interview stage (Question 4) will detect this and the synthesis stage will cross-reference the Path 1 memories with the deep analysis results, enriching rather than duplicating.
+Many users will do Path 1 first and then come to Path 2 later when their data export arrives (it can take up to 24 hours). In this case, they already have Claude memories from Path 1. The interview stage (Question 5) will detect this and the synthesis stage will cross-reference the Path 1 memories with the deep analysis results, enriching rather than duplicating.
 
 ## Before You Begin
 
@@ -37,10 +37,10 @@ Processing time depends on the size of the export. Share these estimates with th
 
 | Export size | Batches | Estimated time |
 |---|---|---|
-| Small (under 200 conversations) | 3-5 batches | 5-10 minutes |
-| Medium (200-800 conversations) | 8-15 batches | 15-25 minutes |
-| Large (800-1500 conversations) | 15-25 batches | 25-40 minutes |
-| Very large (1500+ conversations) | 25-40 batches | 40-60 minutes |
+| Small (under 200 conversations) | 3-5 batches | 10-15 minutes |
+| Medium (200-800 conversations) | 8-15 batches | 20-30 minutes |
+| Large (800-1500 conversations) | 15-25 batches | 30-45 minutes |
+| Very large (1500+ conversations) | 25-40 batches | 45-60 minutes |
 
 These estimates assume batch analysis is the bottleneck (it is). Preprocessing takes under a minute regardless of size. Synthesis takes 2-5 minutes. The fact-checking interview and import walkthrough add another 5-10 minutes at the end.
 
@@ -276,7 +276,7 @@ Discrete facts and preferences extracted from conversations, formatted as a list
 Aim for 30-100 memories depending on how much is in the history. Quality over quantity. Each memory should be a single, specific, useful fact.
 
 ### 3. System Prompt (`claude-system-prompt.md`)
-A ready-to-use system prompt for Claude Chat or the API, tailored to this specific user. It should encode their communication preferences, key context, and any specific instructions that would make Claude more useful to them from the first message.
+A ready-to-use system prompt for claude.ai, Cowork, Claude Code, or the API, tailored to this specific user. It should encode their communication preferences, key context, and any specific instructions that would make Claude more useful to them from the first message.
 
 ### 4. Cowork Skills Suggestions (`claude-skills.md`)
 Based on patterns in how they used ChatGPT, suggest 3-5 Cowork skills that would be valuable. For each: a name, what it would do, why it would help them specifically, and a rough outline of what the SKILL.md would contain. Don't build the full skills, just give enough detail that the user (or Claude) could build them later.
