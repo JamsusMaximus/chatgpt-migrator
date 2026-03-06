@@ -4,19 +4,45 @@ An [Agent Skill](https://agentskills.io) that migrates your entire ChatGPT conve
 
 It processes thousands of conversations, applies recency weighting (so your profile reflects who you are *now*, not a blurred composite of all time periods), and walks you through importing everything into Claude step by step - including which MCP servers and integrations to set up based on the tools you actually use.
 
-## Before you start: export your ChatGPT data
+## Get started
 
-You'll need a copy of your ChatGPT conversation history. Here's how to get it:
+### Step 1: Export your ChatGPT data
 
-1. Go to [chatgpt.com](https://chatgpt.com)
-2. Click your profile icon (top-right) > **Settings**
-3. Click **Data controls** in the left sidebar
-4. Click **Export data** > **Confirm export**
-5. Wait for the email from OpenAI with a download link
+1. Go to [chatgpt.com](https://chatgpt.com) > profile icon (top-right) > **Settings**
+2. Click **Data controls** > **Export data** > **Confirm export**
+3. Wait for the email from OpenAI with a download link
+4. Download the zip and unzip it
 
-**The export can take anywhere from a few minutes to 24 hours.** There's no way to speed it up. Most arrive within an hour, but plan ahead in case yours takes longer.
+**The export can take anywhere from a few minutes to 24 hours.** Most arrive within an hour, but plan ahead in case yours takes longer.
 
-Once the email arrives, download the zip file and unzip it. You'll see a folder full of `conversations-*.json` files, a `chat.html` file, and various other bits. That's what the skill processes.
+### Step 2: Run the migration
+
+#### Option A: Cowork or Claude Code (recommended)
+
+Install the skill:
+
+```bash
+git clone https://github.com/JamsusMaximus/chatgpt-migrator.git
+cp -r chatgpt-migrator/chatgpt-migrator ~/.claude/skills/
+```
+
+Then open Cowork or Claude Code, select the unzipped export folder, and say "migrate my ChatGPT data". The skill triggers automatically and handles the rest, with progress updates throughout.
+
+This is the recommended path because Cowork and Claude Code can use subagents for parallel processing and have direct file system access, which makes large exports much smoother.
+
+#### Option B: Claude Chat (standalone prompt)
+
+If you're using Claude Chat (claude.ai), no skill installation needed:
+
+1. Open [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md) and copy the prompt between the `---` lines
+2. Start a new Claude conversation with the export folder added as context
+3. Paste the prompt
+
+This gives Claude the same instructions as the skill. It works well for smaller exports.
+
+#### Don't have your export yet?
+
+While you wait, you can do an instant partial migration: paste the ChatGPT memory extraction prompt (included in [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md)) into ChatGPT to extract its stored memories, then import the result into Claude via [claude.com/import-memory](https://claude.com/import-memory). The skill will cross-reference these with your full export later.
 
 ## What it produces
 
@@ -29,42 +55,6 @@ Once the email arrives, download the zip file and unzip it. You'll see a folder 
 | `claude-integrations.md` | Recommended MCP servers, connectors, and integrations based on the tools and services you actually use |
 | `topic-index.md` | Your conversation archive organised by theme |
 | `migration-summary.md` | Overview of everything that was processed and found |
-
-## Two ways to migrate
-
-### Path 1: Install the skill in Cowork or Claude Code (recommended)
-
-This is the best experience. The skill automates the full pipeline: it interviews you about your priorities, preprocesses your export into batches, analyses everything using subagents, synthesises the results, fact-checks key findings with you, and walks you through importing into Claude.
-
-**Install the skill:**
-
-Download the latest `.skill` file from [Releases](../../releases) and install it, or clone and copy:
-
-```bash
-git clone https://github.com/yourusername/chatgpt-migrator.git
-cp -r chatgpt-migrator/chatgpt-migrator ~/.claude/skills/
-```
-
-**Run it:**
-
-1. Open Cowork or Claude Code and select the unzipped export folder
-2. Say "migrate my ChatGPT data" (or anything similar - the skill triggers automatically)
-
-That's it. The skill handles everything from there, with progress updates throughout. If you don't have your export yet, the skill will walk you through requesting it from ChatGPT.
-
-### Path 2: Use the standalone prompt in Claude Chat
-
-If you're using Claude Chat (claude.ai) rather than Cowork or Claude Code, you can use the standalone prompt instead. No skill installation needed.
-
-1. Open [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md) and copy the prompt between the `---` lines
-2. Start a new Claude conversation with the export folder added as context
-3. Paste the prompt
-
-This gives Claude the same instructions as the skill. It works well, but Cowork and Claude Code handle large exports more smoothly because they can use subagents for parallel processing and have direct file system access.
-
-### Quick start: don't have your export yet?
-
-While you wait for your export (which can take up to 24 hours), you can do an instant partial migration. Paste this prompt into ChatGPT to extract its stored memories, then import the result into Claude via [claude.com/import-memory](https://claude.com/import-memory). This captures what ChatGPT explicitly memorised, but misses the deeper patterns the full migration finds. The skill will cross-reference these with your full export later if you've done both.
 
 ## How it works
 
@@ -113,10 +103,9 @@ README.md                   # This file
 
 ## Requirements
 
+- A ChatGPT data export ([how to get one](#step-1-export-your-chatgpt-data))
 - Python 3.8+ (for the preprocessor script)
-- **Path 1:** Claude Cowork or Claude Code (file system access and subagent support)
-- **Path 2:** Claude Chat (claude.ai) with the export folder added as context
-- A ChatGPT data export
+- Claude Cowork or Claude Code (recommended), or Claude Chat for the standalone prompt
 
 ## License
 
