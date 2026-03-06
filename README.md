@@ -17,8 +17,6 @@ It processes thousands of conversations, applies recency weighting (so your prof
 
 ### Step 2: Run the migration
 
-#### Option A: Cowork or Claude Code (recommended)
-
 Install the skill (works in both Cowork and Claude Code):
 
 ```
@@ -27,17 +25,7 @@ npx skills add JamsusMaximus/chatgpt-migrator
 
 Then open your unzipped ChatGPT export folder and say "migrate my ChatGPT data". The skill triggers automatically and handles the rest, with progress updates throughout.
 
-Cowork and Claude Code are the recommended path because they can use subagents for parallel processing and have direct file system access, which makes large exports much smoother.
-
-#### Option B: Claude Chat (standalone prompt)
-
-If you're using Claude Chat (claude.ai), no skill installation needed:
-
-1. Open [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md) and copy the prompt between the `---` lines
-2. Start a new Claude conversation with the export folder added as context
-3. Paste the prompt
-
-This gives Claude the same instructions as the skill. It works well for smaller exports.
+This skill requires [Cowork](https://claude.ai/cowork) or [Claude Code](https://claude.ai/code) because it needs file system access to read your export and subagent support to process batches in parallel.
 
 #### Don't have your export yet?
 
@@ -104,7 +92,7 @@ README.md                   # This file
 
 - A ChatGPT data export ([how to get one](#step-1-export-your-chatgpt-data))
 - Python 3.8+ (for the preprocessor script)
-- Claude Cowork or Claude Code (recommended), or Claude Chat for the standalone prompt
+- Claude Cowork or Claude Code (file system access and subagent support required)
 
 ## License
 
