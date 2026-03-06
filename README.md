@@ -69,7 +69,7 @@ You get regular progress updates throughout. After preprocessing, the skill give
 
 ## Privacy
 
-Your export files stay on your machine. Conversation content is sent to Claude for processing (as with any Claude interaction), but is not stored beyond your session or used for model training. No data is sent to any third-party services.
+Your export files stay on your machine. Conversation content is sent to Claude for processing, subject to [Anthropic's standard usage policy](https://www.anthropic.com/policies/privacy). No data is sent to any third-party services.
 
 ## Repo structure
 
