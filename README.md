@@ -19,20 +19,13 @@ It processes thousands of conversations, applies recency weighting (so your prof
 
 #### Option A: Cowork or Claude Code (recommended)
 
-**In Cowork:** Open Cowork, go to Skills, and install the `chatgpt-migrator.skill` file from this repo. Then open your unzipped ChatGPT export folder and say "migrate my ChatGPT data". The skill triggers automatically and handles the rest, with progress updates throughout.
+Install the skill (works in both Cowork and Claude Code):
 
-**In Claude Code:** Run these two commands to install the skill, then start a session in your export folder:
-
-```bash
-git clone https://github.com/JamsusMaximus/chatgpt-migrator.git
-cp -r chatgpt-migrator/chatgpt-migrator ~/.claude/skills/
+```
+npx skills add JamsusMaximus/chatgpt-migrator
 ```
 
-```bash
-cd /path/to/your/chatgpt-export
-claude
-# then say "migrate my ChatGPT data"
-```
+Then open your unzipped ChatGPT export folder and say "migrate my ChatGPT data". The skill triggers automatically and handles the rest, with progress updates throughout.
 
 Cowork and Claude Code are the recommended path because they can use subagents for parallel processing and have direct file system access, which makes large exports much smoother.
 
