@@ -2,7 +2,23 @@
 
 An [Agent Skill](https://agentskills.io) that migrates your entire ChatGPT conversation history into Claude-ready context files, memories, system prompts, and skill suggestions.
 
-It processes thousands of conversations, applies recency weighting (so your profile reflects who you are *now*, not a blurred composite of all time periods), and walks you through importing everything into Claude step by step - including which MCP servers and integrations to set up based on the tools you actually use.
+It:
+
+1. Processes thousands of conversations in batches using subagents
+2. Applies recency weighting so your profile reflects who you are *now*, not a blurred composite of all time periods
+3. Fact-checks key findings with you before finalising
+4. Recommends MCP servers and integrations based on the tools you actually use
+5. Walks you through importing everything into Claude step by step
+
+| File | What you get |
+|---|---|
+| `claude-profile.md` | Comprehensive "about you" context document for Claude Projects |
+| `claude-memories.md` | 30-100+ discrete facts to add to Claude's memory |
+| `claude-system-prompt.md` | Ready-to-use custom instructions tailored to you |
+| `claude-skills.md` | 3-5 skill suggestions based on your usage patterns |
+| `claude-integrations.md` | Recommended MCP servers and integrations to set up |
+| `topic-index.md` | Your conversation archive organised by theme |
+| `migration-summary.md` | Overview of everything that was processed and found |
 
 ## Get started
 
@@ -30,18 +46,6 @@ This skill requires [Cowork](https://claude.ai/cowork) or [Claude Code](https://
 #### Don't have your export yet?
 
 While you wait, you can do an instant partial migration: paste the ChatGPT memory extraction prompt (included in [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md)) into ChatGPT to extract its stored memories, then import the result into Claude via [claude.com/import-memory](https://claude.com/import-memory). The skill will cross-reference these with your full export later.
-
-## What it produces
-
-| File | Purpose |
-|---|---|
-| `claude-profile.md` | Comprehensive "about you" context document for Claude Projects |
-| `claude-memories.md` | 30-100+ discrete facts to add to Claude's memory |
-| `claude-system-prompt.md` | Ready-to-use custom instructions tailored to you |
-| `claude-skills.md` | 3-5 Cowork skill suggestions based on your usage patterns |
-| `claude-integrations.md` | Recommended MCP servers, connectors, and integrations based on the tools and services you actually use |
-| `topic-index.md` | Your conversation archive organised by theme |
-| `migration-summary.md` | Overview of everything that was processed and found |
 
 ## How it works
 
