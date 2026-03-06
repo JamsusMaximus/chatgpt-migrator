@@ -1,6 +1,6 @@
-# ChatGPT to Claude Migration Skill
+# Switch from ChatGPT to Claude
 
-An [Agent Skill](https://agentskills.io) that migrates your entire ChatGPT conversation history into Claude-ready context files, memories, system prompts, and skill suggestions.
+An [Agent Skill](https://agentskills.io) that migrates your entire ChatGPT conversation history to Claude. Import your ChatGPT export and get back Claude-ready memories, a personalised system prompt, a user profile, skill suggestions, and integration recommendations.
 
 It:
 
