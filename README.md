@@ -69,7 +69,7 @@ You get regular progress updates throughout. After preprocessing, the skill give
 
 ## Privacy
 
-Everything runs locally. Your data stays on your machine and is processed by Claude in your session. Nothing is uploaded or stored externally.
+Your export files stay on your machine. Conversation content is sent to Claude for processing (as with any Claude interaction), but is not stored beyond your session or used for model training. No data is sent to any third-party services.
 
 ## Repo structure
 
