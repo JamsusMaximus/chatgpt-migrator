@@ -88,7 +88,44 @@ Based on patterns in how they used ChatGPT (weighted towards recent usage), sugg
 
 Focus on skills that reflect their *current* work and interests, not historical ones.
 
-### 5. topic-index.md - Conversation Archive Index
+### 5. claude-integrations.md - MCP Servers & Integrations
+
+Based on tools, services, and APIs that appear in the user's ChatGPT history (weighted towards recent usage), recommend MCP servers, Claude connectors, and integrations they should set up.
+
+For each recommendation:
+
+- **Name**: The MCP server or integration
+- **Where to find it**: Link or install method (e.g., "Available in Claude.ai Settings > Connectors" or "Install via `claude mcp add`")
+- **Why for this user**: The specific pattern in their history that makes this relevant, with evidence
+- **What it enables**: 2-3 concrete things they'll be able to do
+
+Look for these mappings in the batch analyses' `tools_and_workflows` data:
+
+| Service in ChatGPT history | Claude integration |
+|---|---|
+| Google Docs/Sheets/Slides | Google Workspace MCP server or Claude connector |
+| Google Calendar | Google Calendar MCP server or Claude connector |
+| Gmail | Gmail MCP server or Claude connector |
+| GitHub/GitLab | GitHub MCP server |
+| Slack | Slack MCP server |
+| Notion | Notion MCP server or Claude connector |
+| Linear | Linear MCP server |
+| Jira | Jira/Atlassian MCP server |
+| Figma | Figma MCP server |
+| PostgreSQL/MySQL/SQLite | Database MCP servers |
+| Stripe | Stripe MCP server |
+| Todoist/task management | Todoist MCP server |
+| Web research/scraping | Brave Search or Firecrawl MCP server |
+| PostHog/Mixpanel/analytics | Note as a potential custom MCP server opportunity |
+| Zapier/Make/automation | Note that MCP servers can replace many of these workflows |
+
+Only include integrations where there's clear evidence in the user's history. If they only used ChatGPT for conversation and writing with no tool integrations, keep this section short and honest: "Based on your ChatGPT usage, no specific integrations are strongly indicated. As you use Claude more, you may find MCP servers useful for..."
+
+Group recommendations by priority: "Set up now" (clear match, they use the service frequently and recently) vs "Worth exploring" (used the service but less frequently or less recently).
+
+**Important: Only recommend official MCP servers and integrations.** Only suggest MCP servers published by the service provider themselves (e.g., the official GitHub MCP server by GitHub, the official Slack MCP server by Slack) or first-party Claude connectors available in Claude's settings. Never recommend unofficial or community-built MCP servers. If no official integration exists for a service, note it as a gap rather than pointing to a third-party alternative.
+
+### 6. topic-index.md - Conversation Archive Index
 
 Organise their conversation history by theme. For each theme:
 
@@ -101,7 +138,7 @@ Organise their conversation history by theme. For each theme:
 
 Sort themes by a combination of frequency and recency (a theme with 5 recent conversations ranks above a theme with 20 historical ones).
 
-### 6. migration-summary.md - Executive Summary
+### 7. migration-summary.md - Executive Summary
 
 A friendly, readable overview of the whole migration. Cover:
 
@@ -115,7 +152,7 @@ A friendly, readable overview of the whole migration. Cover:
 
 Keep it under 500 words.
 
-### 7. memory-crossref.md (only if Claude memory was provided)
+### 8. memory-crossref.md (only if Claude memory was provided)
 
 A clear comparison between existing Claude memories and what was found in the ChatGPT export:
 

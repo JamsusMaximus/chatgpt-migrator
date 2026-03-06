@@ -2,7 +2,21 @@
 
 An [Agent Skill](https://agentskills.io) that migrates your entire ChatGPT conversation history into Claude-ready context files, memories, system prompts, and skill suggestions.
 
-It processes thousands of conversations, applies recency weighting (so your profile reflects who you are *now*, not a blurred composite of all time periods), and walks you through importing everything into Claude step by step.
+It processes thousands of conversations, applies recency weighting (so your profile reflects who you are *now*, not a blurred composite of all time periods), and walks you through importing everything into Claude step by step - including which MCP servers and integrations to set up based on the tools you actually use.
+
+## Before you start: export your ChatGPT data
+
+You'll need a copy of your ChatGPT conversation history. Here's how to get it:
+
+1. Go to [chatgpt.com](https://chatgpt.com)
+2. Click your profile icon (top-right) > **Settings**
+3. Click **Data controls** in the left sidebar
+4. Click **Export data** > **Confirm export**
+5. Wait for the email from OpenAI with a download link
+
+**The export can take anywhere from a few minutes to 24 hours.** There's no way to speed it up. Most arrive within an hour, but plan ahead in case yours takes longer.
+
+Once the email arrives, download the zip file and unzip it. You'll see a folder full of `conversations-*.json` files, a `chat.html` file, and various other bits. That's what the skill processes.
 
 ## What it produces
 
@@ -12,20 +26,17 @@ It processes thousands of conversations, applies recency weighting (so your prof
 | `claude-memories.md` | 30-100+ discrete facts to add to Claude's memory |
 | `claude-system-prompt.md` | Ready-to-use custom instructions tailored to you |
 | `claude-skills.md` | 3-5 Cowork skill suggestions based on your usage patterns |
+| `claude-integrations.md` | Recommended MCP servers, connectors, and integrations based on the tools and services you actually use |
 | `topic-index.md` | Your conversation archive organised by theme |
 | `migration-summary.md` | Overview of everything that was processed and found |
 
-## Two migration paths
+## Two ways to migrate
 
-**Path 1 (Quick Start, 5 minutes):** Paste a prompt into ChatGPT to extract its stored memories, then import them into Claude via [claude.com/import-memory](https://claude.com/import-memory). No data export needed.
+### Path 1: Install the skill in Cowork or Claude Code (recommended)
 
-**Path 2 (Deep Migration, 20-60 minutes):** Process your full ChatGPT export. This is what the skill automates. It finds everything ChatGPT's memory feature missed: patterns in how you work, professional context from conversations, preferences you never explicitly stated, and the full arc of your interests over time.
+This is the best experience. The skill automates the full pipeline: it interviews you about your priorities, preprocesses your export into batches, analyses everything using subagents, synthesises the results, fact-checks key findings with you, and walks you through importing into Claude.
 
-You can do Path 1 immediately and Path 2 later when your export arrives. The skill handles both and will cross-reference them if you've done both.
-
-## Install
-
-### As a Cowork/Claude Code skill
+**Install the skill:**
 
 Download the latest `.skill` file from [Releases](../../releases) and install it, or clone and copy:
 
@@ -34,30 +45,26 @@ git clone https://github.com/yourusername/chatgpt-migrator.git
 cp -r chatgpt-migrator/chatgpt-migrator ~/.claude/skills/
 ```
 
-### Without installing
+**Run it:**
 
-If you don't want to install the skill, you can use the standalone prompt instead. See [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md) for a copy-paste prompt that gives Claude the same instructions.
+1. Open Cowork or Claude Code and select the unzipped export folder
+2. Say "migrate my ChatGPT data" (or anything similar - the skill triggers automatically)
 
-## Usage
+That's it. The skill handles everything from there, with progress updates throughout. If you don't have your export yet, the skill will walk you through requesting it from ChatGPT.
 
-### With the skill installed
+### Path 2: Use the standalone prompt in Claude Chat
 
-1. Export your ChatGPT data: ChatGPT > Settings > Data controls > Export data
-2. Download and unzip the export when the email arrives (can take up to 24 hours)
-3. Open Cowork or Claude Code and select the unzipped folder
-4. Say "migrate my ChatGPT data" (or anything similar; the skill triggers automatically)
+If you're using Claude Chat (claude.ai) rather than Cowork or Claude Code, you can use the standalone prompt instead. No skill installation needed.
 
-The skill handles everything from there: it interviews you about your priorities, preprocesses the export, analyses it in batches, synthesises the results, fact-checks key findings with you, and walks you through importing into Claude.
+1. Open [STANDALONE-PROMPT.md](STANDALONE-PROMPT.md) and copy the prompt between the `---` lines
+2. Start a new Claude conversation with the export folder added as context
+3. Paste the prompt
 
-### Without the skill
+This gives Claude the same instructions as the skill. It works well, but Cowork and Claude Code handle large exports more smoothly because they can use subagents for parallel processing and have direct file system access.
 
-1. Follow the same export steps above
-2. Open the [standalone prompt](STANDALONE-PROMPT.md) and copy the prompt between the `---` lines
-3. Paste it into a new Claude conversation with the export folder selected
+### Quick start: don't have your export yet?
 
-### Don't have your export yet?
-
-The skill handles this too. If you trigger it without an export in your folder, it'll walk you through exporting from ChatGPT and offer the quick Path 1 migration while you wait.
+While you wait for your export (which can take up to 24 hours), you can do an instant partial migration. Paste this prompt into ChatGPT to extract its stored memories, then import the result into Claude via [claude.com/import-memory](https://claude.com/import-memory). This captures what ChatGPT explicitly memorised, but misses the deeper patterns the full migration finds. The skill will cross-reference these with your full export later if you've done both.
 
 ## How it works
 
@@ -107,8 +114,9 @@ README.md                   # This file
 ## Requirements
 
 - Python 3.8+ (for the preprocessor script)
-- Claude with file system access and subagent support (Cowork or Claude Code)
-- A ChatGPT data export (or just a ChatGPT account for Path 1)
+- **Path 1:** Claude Cowork or Claude Code (file system access and subagent support)
+- **Path 2:** Claude Chat (claude.ai) with the export folder added as context
+- A ChatGPT data export
 
 ## License
 

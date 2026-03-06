@@ -42,6 +42,9 @@ The 3-5 most substantive or revealing conversations in this batch. Prioritise re
 ### 6. Tools & Workflows
 Specific tools, software, frameworks, or workflows the user mentions using. Include version numbers or specifics if mentioned. Note the era, since tool preferences change over time.
 
+### 6b. External Services & APIs
+Separate from general tools, specifically note any external services, SaaS platforms, or APIs the user works with. These inform MCP server and integration recommendations. Examples: Google Workspace (Docs, Sheets, Calendar, Gmail), GitHub, Slack, Notion, Linear, Jira, Figma, Stripe, databases (PostgreSQL, MySQL), analytics tools (PostHog, Mixpanel), task managers (Todoist, Asana), CRMs (HubSpot, Salesforce), etc. Note how they use each service (just mentions vs active integration/API work) and the era.
+
 ### 7. Values & Priorities
 What the user seems to care about, based on what they ask about and how they react. This is the most interpretive category - keep it grounded in evidence.
 
@@ -78,6 +81,9 @@ Return a JSON object with this structure:
   ],
   "tools_and_workflows": [
     {"tool": "...", "context": "how they use it", "era": "recent|mid|older|historical"}
+  ],
+  "external_services": [
+    {"service": "...", "usage_type": "mentions|active_use|api_integration", "context": "how they use it", "era": "recent|mid|older|historical"}
   ],
   "values_and_priorities": [
     {"value": "...", "evidence": "..."}

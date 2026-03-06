@@ -64,7 +64,7 @@ The progress file has this structure:
     "scope": "everything",
     "priority": "understand_me",
     "target": "all_platforms",
-    "existing_claude_user": true,
+    "claude_experience": "few_months",
     "claude_memories_provided": true
   },
   "preprocessing": {
@@ -174,10 +174,17 @@ Before processing anything, have a brief conversation with the user to understan
 - Claude Code (developer tool)
 - Multiple / all of the above
 
-**Question 4: Existing Claude usage** - "Are you already using Claude? If so, do you have memories saved in Claude that we should cross-reference?"
+**Question 4: Claude experience** - "What's your Claude experience so far?"
+- I'm completely new to Claude (just switched from ChatGPT)
+- I've been using Claude for a few weeks
+- I've been using Claude for a few months
+- I've been using Claude for 6+ months
+
+This shapes the tone and depth of the import walkthrough. New users need more guidance on Claude's features, memory, and projects. Experienced users mainly need their ChatGPT context ported over efficiently.
+
+**Question 5: Existing Claude memories** - "Do you have memories saved in Claude that we should cross-reference with your ChatGPT history?"
 - Yes, I have Claude memories (ask them to paste or export their memories)
-- Yes, but no saved memories
-- No, completely new to Claude
+- No / not sure
 
 If they have existing Claude memories, save them to the migration-workspace as `existing-claude-memories.txt`. These will be cross-referenced during synthesis to identify confirmed facts, outdated information, and new discoveries.
 
@@ -274,13 +281,38 @@ A ready-to-use system prompt for Claude Chat or the API, tailored to this specif
 ### 4. Cowork Skills Suggestions (`claude-skills.md`)
 Based on patterns in how they used ChatGPT, suggest 3-5 Cowork skills that would be valuable. For each: a name, what it would do, why it would help them specifically, and a rough outline of what the SKILL.md would contain. Don't build the full skills, just give enough detail that the user (or Claude) could build them later.
 
-### 5. Topic Index (`topic-index.md`)
+### 5. Integrations & MCP Servers (`claude-integrations.md`)
+Based on the tools, services, and APIs that appear in their ChatGPT history (weighted towards recent usage), recommend MCP servers, Claude connectors, and integrations they should set up. For each recommendation:
+
+- **What it is**: The MCP server or integration name and where to find it
+- **Why for this user**: What pattern in their history makes this relevant (e.g., "You frequently worked with Google Sheets data in ChatGPT" -> Google Sheets MCP server)
+- **What it enables**: 2-3 concrete things they'll be able to do with Claude that they were doing with ChatGPT
+
+Common mappings to look for:
+- **Google Workspace** (Docs, Sheets, Calendar, Gmail) -> Google MCP servers or Claude connectors
+- **GitHub/GitLab** -> GitHub MCP server
+- **Slack** -> Slack MCP server
+- **Notion** -> Notion MCP server or Claude connector
+- **Linear/Jira** -> Linear MCP server
+- **Figma** -> Figma MCP server
+- **Databases** (PostgreSQL, MySQL, etc.) -> Database MCP servers
+- **Web scraping/research** -> Firecrawl, Brave Search, or web search MCP servers
+- **File management** -> Filesystem MCP server
+- **Todoist/task management** -> Todoist MCP server
+- **Stripe/billing** -> Stripe MCP server
+- **Analytics** (PostHog, Mixpanel, GA) -> relevant MCP servers if available, or note that a custom integration would be valuable
+
+Only recommend integrations where there's clear evidence in their history. Don't pad with generic suggestions. If they only used ChatGPT for conversation and writing, it's fine to have a short list or even say "No specific integrations recommended based on your usage patterns."
+
+**Important: Only recommend official MCP servers and integrations.** Only suggest MCP servers published by the service provider themselves (e.g., the official GitHub MCP server by GitHub, the official Slack MCP server by Slack) or first-party Claude connectors available in Claude's settings. Never recommend unofficial or community-built MCP servers. If no official integration exists for a service the user relies on, note it as a gap rather than pointing to a third-party alternative.
+
+### 6. Topic Index (`topic-index.md`)
 A curated index of their conversation history organised by theme/topic. For each topic: a brief description, how many conversations touched on it, the date range, and the 3-5 most notable conversation titles. This serves as a reference so they know what's in their archive.
 
-### 6. Migration Summary (`migration-summary.md`)
+### 7. Migration Summary (`migration-summary.md`)
 A brief, readable summary of the whole migration: what was processed, what was found, what was produced, and suggestions for next steps. This is the document they'll read first.
 
-### 7. Memory Cross-Reference (`memory-crossref.md`, only if user provided Claude memories)
+### 8. Memory Cross-Reference (`memory-crossref.md`, only if user provided Claude memories)
 If the user already has Claude memories, produce a cross-reference showing:
 - **Confirmed**: Facts that appear in both Claude memory and ChatGPT analysis
 - **Potentially outdated**: Claude memories contradicted by recent ChatGPT conversations
@@ -389,6 +421,7 @@ This is the most important part. Walk the user through exactly how to get their 
 
 **For all users:**
 
+- `claude-integrations.md` lists MCP servers and Claude connectors to install based on the tools and services in your history. Review the list and install any that look useful.
 - `topic-index.md` is for your reference. Keep it somewhere handy if you want to look back at what you discussed with ChatGPT.
 - `migration-summary.md` is a one-time read. It summarises what was processed and found.
 - If a `memory-crossref.md` was produced, review the "potentially outdated" section and update or remove those Claude memories.

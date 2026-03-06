@@ -63,7 +63,8 @@ Here's how I'd like you to approach this:
 - What do I want to extract? (Everything, mostly work stuff, mostly personal, a specific topic)
 - What matters most? (Claude understanding who I am, carrying over professional context, preserving reference material, or getting set up with good prompts/skills)
 - Where will I primarily use Claude? (Claude.ai, Cowork, Claude Code, or all of them)
-- Am I already using Claude? If so, do I have existing Claude memories to cross-reference?
+- What's my Claude experience so far? (Completely new / a few weeks / a few months / 6+ months). This shapes how much guidance to give during the import walkthrough.
+- Do I have existing Claude memories we should cross-reference with my ChatGPT history?
 
 **Step 3: Preprocess.** The raw export is too large to read directly. Write and run a Python script that:
 - Reads all `conversations-*.json` files
@@ -121,11 +122,13 @@ Save each batch analysis as a structured JSON file in the migration-workspace.
 
 4. **claude-skills.md** - 3-5 suggested Cowork skills based on my *recent* usage patterns. For each: name, purpose, why it suits me, and a rough outline.
 
-5. **topic-index.md** - My conversation history organised by theme, with counts and representative titles. Sort by a combination of frequency and recency (recent themes first).
+5. **claude-integrations.md** - Recommended MCP servers, Claude connectors, and integrations based on the tools and services that appear in my history. For each: what it is, why it's relevant to me (with evidence from my usage patterns), and what it enables. Map tools and services I used with ChatGPT to their Claude equivalents (e.g., Google Workspace -> Google MCP servers, GitHub -> GitHub MCP server, Notion -> Notion connector, Slack -> Slack MCP server, databases -> database MCP servers, etc.). Only include integrations where there's clear evidence in my history - don't pad with generic suggestions. Only recommend official MCP servers (published by the service provider) and first-party Claude connectors - never unofficial or community-built ones. If no official integration exists for a service I use, note it as a gap.
 
-6. **migration-summary.md** - A brief overview of what was processed, key findings, recency breakdown, and next steps.
+6. **topic-index.md** - My conversation history organised by theme, with counts and representative titles. Sort by a combination of frequency and recency (recent themes first).
 
-7. **memory-crossref.md** (only if I provided existing Claude memories) - A cross-reference showing: confirmed facts (in both), potentially outdated Claude memories (contradicted by recent ChatGPT data), new discoveries (from ChatGPT, not in Claude memory), and Claude-only memories (left as-is).
+7. **migration-summary.md** - A brief overview of what was processed, key findings, recency breakdown, and next steps.
+
+8. **memory-crossref.md** (only if I provided existing Claude memories) - A cross-reference showing: confirmed facts (in both), potentially outdated Claude memories (contradicted by recent ChatGPT data), new discoveries (from ChatGPT, not in Claude memory), and Claude-only memories (left as-is).
 
 **Step 6: Fact-check with me.** Before finalising, pick up to 10 key facts from the synthesis that are most likely to be wrong or outdated (current job, location, relationships, active projects, etc.) and ask me to confirm, correct, or discard each one. Then update the output files based on my answers. This is important because the analysis is working from conversation fragments and can easily get things wrong.
 
@@ -150,6 +153,7 @@ After the migration, you'll have these files ready to use:
 | `claude-memories.md` | Discrete facts Claude should know | Add to Claude's memory (manually or via conversation) |
 | `claude-system-prompt.md` | Customised instructions for Claude | Set as custom instructions in Claude.ai settings, or as CLAUDE.md for Claude Code |
 | `claude-skills.md` | Suggested automation skills | Build these as Cowork skills |
+| `claude-integrations.md` | MCP servers and connectors to install | Set up the ones that match your workflow |
 | `topic-index.md` | Archive of your ChatGPT history | Personal reference |
 | `migration-summary.md` | Overview of the migration | Read this first |
 | `memory-crossref.md` | Cross-reference with existing Claude memories | Review and update your Claude memories |
