@@ -12,6 +12,40 @@ Everything is ready to import into Claude when it's done.
 
 ---
 
+## What you get
+
+### Personal profile
+
+A comprehensive "about you" document covering who you are, what you do, your interests, communication style, and key life context. It reads like a friend describing you to someone who's about to help you, not a clinical dossier. Add it to a Claude Project or keep it in a folder Cowork can access, and Claude has your full context from the first message.
+
+### Memories
+
+30-100+ discrete facts extracted from your conversations, ready to add to Claude's memory. Things like your job title, location, preferences ("prefers concise responses"), current projects, and personal details you've shared naturally over time. Each one is a single, specific, useful fact.
+
+### Custom instructions
+
+A tailored system prompt you can paste straight into Claude's settings. It encodes your communication preferences, key context, and specific instructions so Claude works the way you like from day one, without you having to explain yourself again.
+
+### Skill suggestions
+
+3-5 custom Cowork skills suggested based on how you actually used ChatGPT. Each suggestion includes a name, what it would do, why it would help you specifically, and enough detail that you (or Claude) could build it. If you used ChatGPT for weekly reporting, data analysis, or content drafting, those patterns turn into purpose-built skills.
+
+### Integrations and MCP servers
+
+Personalised recommendations for MCP servers and Claude connectors based on the tools and services that appear in your ChatGPT history. If you frequently worked with Google Sheets, you'll get pointed to the Google Sheets connector. Used GitHub? You'll see the GitHub MCP server. Each recommendation explains what it is, why it's relevant to you, and what it lets you do with Claude. Only official integrations are recommended.
+
+Common recommendations include connectors for Google Workspace, GitHub, Slack, Notion, Linear, Figma, Todoist, databases, and web research tools, but only the ones that match your actual usage.
+
+### Topic index
+
+Your entire conversation archive organised by theme. For each topic: a brief description, how many conversations touched on it, the date range, and the most notable conversation titles. Useful as a reference for what you've discussed and when.
+
+### Migration summary
+
+A brief overview of what was processed, what was found, and suggestions for next steps. This is the first thing you'll read when the migration finishes.
+
+---
+
 ## Get started
 
 ### Step 1: Request your ChatGPT export
