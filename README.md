@@ -39,8 +39,8 @@ Then upload it:
 
 That's it. No git, no terminal, no npm. One file, one upload.
 
-> [!WARNING]
-> **Do NOT** download the repo as a zip from the green "Code" button on GitHub. That creates a nested folder structure that Cowork rejects. Download the **`.skill` file** link above - it's a self-contained package with everything bundled inside.
+> [!TIP]
+> You can also download the repo as a zip from the green "Code" button on GitHub - just upload the extracted folder in Cowork. The `.skill` file above is simpler though: one file, no unzipping.
 
 ### 3. Run the migration
 
@@ -108,7 +108,7 @@ Your export files stay on your machine. Conversation content is sent to Claude f
 
 | Error / problem | Fix |
 |---|---|
-| "SKILL.md must be in the top-level folder, not nested deeper" | You uploaded the repo zip instead of the `.skill` file. Download [chatgpt-migrator.skill](https://github.com/JamsusMaximus/chatgpt-migrator/raw/main/chatgpt-migrator.skill) specifically. |
+| "SKILL.md must be in the top-level folder, not nested deeper" | You uploaded a zip or folder where `SKILL.md` isn't at the root level. Try uploading the [chatgpt-migrator.skill](https://github.com/JamsusMaximus/chatgpt-migrator/raw/main/chatgpt-migrator.skill) file instead, or re-extract the repo zip and upload the inner folder. |
 | "SKILL.md must start with YAML frontmatter" | You uploaded the wrong file (probably the README). Upload the `.skill` file instead. |
 | `npx skills add` doesn't work | That command isn't supported. Upload the `.skill` file in Cowork instead. |
 | "The git command requires the command line developer tools" | Click **Install**, wait a few minutes, try again. Or skip the terminal and use the Cowork upload method. |
