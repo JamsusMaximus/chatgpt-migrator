@@ -27,10 +27,10 @@ Everything is ready to import into Claude when it's done.
 
 ### Step 2: Install the skill
 
-You need a Claude Pro, Team, or Enterprise plan with access to [Cowork](https://claude.ai/cowork).
+You need a Claude Pro, Team, or Enterprise plan.
 
 1. **[Click here to download the skill file](https://github.com/JamsusMaximus/chatgpt-migrator/raw/main/chatgpt-migrator.skill)** - your browser will save a file called `chatgpt-migrator.skill`
-2. Go to [claude.ai/cowork](https://claude.ai/cowork)
+2. Open the Claude desktop app and click the **Cowork** tab
 3. Click **Skills** in the left sidebar
 4. Click **Upload skill**
 5. Drag the `chatgpt-migrator.skill` file from your Downloads folder into the upload area
@@ -73,7 +73,7 @@ You get progress updates throughout. If a session runs out of context, start a n
 
 ## Privacy
 
-Your files stay on your machine. Conversation content is sent to Claude for processing, subject to [Anthropic's privacy policy](https://www.anthropic.com/policies/privacy). Nothing is sent to any third-party services.
+Your files stay on your machine. Conversation content is sent to Claude for processing, subject to [Anthropic's privacy policy](https://www.anthropic.com/legal/privacy). Nothing is sent to any third-party services.
 
 ---
 
@@ -108,7 +108,7 @@ Then open your ChatGPT export folder and say "migrate my ChatGPT data". The skil
 ### Requirements
 
 - A ChatGPT data export ([how to get one](#step-1-request-your-chatgpt-export))
-- Python 3.8+ (for the preprocessor script - already installed on most Macs)
+- Python 3.8+ (for the preprocessor script - install via [python.org](https://www.python.org/downloads/) if you don't have it)
 - Claude Cowork or Claude Code
 
 ### Repo structure
