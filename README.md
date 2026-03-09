@@ -124,15 +124,14 @@ Your export files stay on your machine. Conversation content is sent to Claude f
 
 ```
 chatgpt-migrator.skill      # Upload this to Cowork (self-contained package)
-chatgpt-migrator/           # Skill source files
-  SKILL.md                  # Skill instructions and YAML frontmatter
-  scripts/
-    preprocessor.py         # Compresses the raw export into batches
-  references/
-    batch-analysis-prompt.md
-    synthesis-prompt.md
-  evals/
-    evals.json
+SKILL.md                    # Skill instructions and YAML frontmatter
+scripts/
+  preprocessor.py           # Compresses the raw export into batches
+references/
+  batch-analysis-prompt.md
+  synthesis-prompt.md
+evals/
+  evals.json
 STANDALONE-PROMPT.md        # Copy-paste prompt for quick partial migration
 LICENSE                     # Apache 2.0
 README.md                   # This file
