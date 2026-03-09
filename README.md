@@ -1,5 +1,9 @@
 # Switch from ChatGPT to Claude
 
+<p align="center">
+  <img src="hero.png" alt="Thousands of ChatGPT conversations transformed into organised profiles, memories, skills, and integrations" width="600">
+</p>
+
 Migrate your entire ChatGPT conversation history to Claude. The skill analyses everything you've discussed with ChatGPT and creates:
 
 - A **personal profile** so Claude knows who you are from day one
