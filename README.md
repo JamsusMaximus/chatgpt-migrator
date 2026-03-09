@@ -30,8 +30,8 @@ Everything is ready to import into Claude when it's done.
 You need a Claude Pro, Team, or Enterprise plan.
 
 1. **[Click here to download the skill file](https://github.com/JamsusMaximus/chatgpt-migrator/raw/main/chatgpt-migrator.skill)** - your browser will save a file called `chatgpt-migrator.skill`
-2. Open the Claude desktop app and click the **Cowork** tab
-3. Click **Skills** in the left sidebar
+2. Open the Claude desktop app
+3. Go to **Settings** > **Customize** > **Skills**
 4. Click **Upload skill**
 5. Drag the `chatgpt-migrator.skill` file from your Downloads folder into the upload area
 6. You'll see it appear in your skills list - that's it, it's installed

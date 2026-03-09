@@ -1,6 +1,6 @@
 ---
 name: chatgpt-migrator
-description: "Migrate from ChatGPT to Claude by analysing a ChatGPT data export. Use this skill whenever a user mentions ChatGPT export, ChatGPT history, ChatGPT migration, switching from ChatGPT, importing ChatGPT data, or drops a folder containing conversations-*.json files. Also trigger if the user has a folder with chat.html and conversations JSON files, even if they don't explicitly say 'ChatGPT'. This skill handles the full pipeline: interviewing the user about their priorities, preprocessing the massive export into manageable batches, analysing conversation themes and patterns, and producing Claude-ready context files, system prompts, memories, and skills."
+description: "Migrate from ChatGPT to Claude. Trigger on: ChatGPT export/history/migration, switching from ChatGPT, or folders with conversations-*.json or chat.html files."
 license: Apache-2.0
 compatibility: "Requires Python 3.8+. Works with Claude Code, Cowork, or any Claude environment with file system access and subagent support."
 metadata:
